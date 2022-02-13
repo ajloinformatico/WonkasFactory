@@ -1,6 +1,5 @@
 package es.infolojo.wonkasfactory.data.adapters
 
-import es.infolojo.wonkasfactory.data.bo.WonkaWorkerBO
 import es.infolojo.wonkasfactory.data.vo.WonkaWorkerVO
 
 sealed class WonkasListState {

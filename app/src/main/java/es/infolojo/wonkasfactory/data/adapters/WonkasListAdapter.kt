@@ -50,12 +50,26 @@ class WonkasListAdapter(
                 .placeholder(R.drawable.ic_baseline_camera_alt_24)
                 .into(binding.wonkaImage)
 
+            binding.profession.text = item.profession
+            binding.email.text = item.email
+            binding.age.text = item.age
+            binding.height.text = item.height
+
             binding.root.setOnClickListener {
                 listener(
                     WonkasListAdapterAction.DetailAction(
                         item.id
                     )
                 )
+            }
+
+            binding.root.setOnLongClickListener {
+                listener(
+                    WonkasListAdapterAction.RemoveAction(
+                        item.id
+                    )
+                )
+                true
             }
 
         }

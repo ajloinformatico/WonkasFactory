@@ -4,6 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
 
     tools:context=".fragment.WonkasListFragment">
+    <item
+        android:id="@+id/reload"
+        android:icon="@drawable/ic_baseline_restore_24"
+        android:title="@string/reload"
+        app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/filter"
@@ -22,6 +27,8 @@
                 android:title="@string/filter_by_height" />
         </menu>
     </item>
+
+
 
 
 </menu>

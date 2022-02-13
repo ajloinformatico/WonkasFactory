@@ -9,4 +9,8 @@
     <dimen name="dp125">125dp</dimen>
     <dimen name="dp126">126dp</dimen>
     <dimen name="dp200">200dp</dimen>
+    <dimen name="dp18">18dp</dimen>
+    <dimen name="sp16">16sp</dimen>
+    <dimen name="dp1">1dp</dimen>
+    <dimen name="dp10">10dp</dimen>
 </resources>

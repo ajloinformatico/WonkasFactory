@@ -4,69 +4,131 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:padding="@dimen/dp8"
-    android:layout_height="@dimen/dp200">
+    android:layout_height="wrap_content">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_view_root"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:elevation="@dimen/dp8"
-        android:background="@color/black"
-        android:backgroundTint="@color/purple_200"
+    <View
+        android:id="@+id/top_separator"
+        android:layout_width="@dimen/dp0"
+        android:layout_height="@dimen/dp1"
+        android:background="@color/grey"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        >
+        app:layout_constraintEnd_toEndOf="parent"
+        />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/card_view_body"
-            android:layout_width="match_parent"
-            android:padding="@dimen/dp8"
-            android:layout_height="match_parent">
+    <View
+        android:id="@+id/bottom_separator"
+        android:layout_width="@dimen/dp0"
+        android:layout_height="@dimen/dp1"
+        android:background="@color/grey"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
 
-            <View
-                android:id="@+id/image_border"
-                android:layout_width="@dimen/dp126"
-                android:layout_height="@dimen/dp126"
-                android:background="@color/white"
-                android:backgroundTint="@color/black"
-                app:layout_constraintTop_toTopOf="@id/card_view_body"
-                app:layout_constraintStart_toStartOf="@id/card_view_body"
-            />
+    <ImageView
+        android:id="@+id/wonka_image"
+        android:layout_width="100dp"
+        android:src="@drawable/ic_baseline_camera_alt_24"
+        android:layout_height="100dp"
+        android:background="@color/white"
+        android:scaleType="centerCrop"
+        android:layout_marginBottom="@dimen/dp18"
+        android:layout_marginTop="@dimen/dp18"
+        android:contentDescription="@string/wonka_image"
+        app:layout_constraintTop_toBottomOf="@id/top_separator"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottom_separator"
+
+        />
+
+    <TextView
+        android:id="@+id/wonka_name"
+        android:layout_width="@dimen/dp0"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp8"
+        android:layout_marginStart="@dimen/dp18"
+        tools:text="Antonio José Lojo"
+        android:gravity="start"
+        style="@style/CustomCardViewTitle"
+        app:layout_constraintStart_toEndOf="@id/wonka_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/top_separator"
+        />
+
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="@dimen/dp0"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp18"
+        style="@style/CustomCardViewSimpleInfo"
+        tools:text="antoniojoselojoojeda@gmail.com"
+        app:layout_constraintTop_toBottomOf="@id/wonka_name"
+        app:layout_constraintStart_toEndOf="@id/wonka_image"/>
+
+    <TextView
+        android:id="@+id/profession_plachecholder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp18"
+        android:text="Profession :"
+        android:textSize="@dimen/sp16"
+        app:layout_constraintTop_toBottomOf="@id/email"
+        app:layout_constraintStart_toEndOf="@id/wonka_image"/>
 
 
-            <ImageView
-                android:id="@+id/wonka_image"
-                android:layout_width="120dp"
-                android:src="@drawable/ic_baseline_camera_alt_24"
-                android:layout_height="120dp"
-                android:background="@color/white"
-                android:scaleType="centerCrop"
-                android:contentDescription="@string/wonka_image"
-                app:layout_constraintTop_toTopOf="@id/image_border"
-                app:layout_constraintStart_toStartOf="@id/image_border"
-                app:layout_constraintEnd_toEndOf="@id/image_border"
-                app:layout_constraintBottom_toBottomOf="@id/image_border"
+    <TextView
+        android:id="@+id/profession"
+        android:layout_width="@dimen/dp0"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp8"
+        style="@style/CustomCardViewSimpleInfo"
+        app:layout_constraintTop_toBottomOf="@id/email"
+        app:layout_constraintStart_toEndOf="@id/profession_plachecholder"
+        tools:text="Developer"/>
 
-                />
+    <TextView
+        android:id="@+id/age_plachecholder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp18"
+        android:text="Age :"
+        android:textSize="@dimen/sp16"
+        app:layout_constraintStart_toEndOf="@id/wonka_image"
+        app:layout_constraintTop_toBottomOf="@id/profession"/>
 
-            <TextView
-                android:id="@+id/wonka_name"
-                android:layout_width="@dimen/dp0"
-                android:layout_height="wrap_content"
-                tools:text="Antonio José Lojo"
-                android:gravity="center"
-                style="@style/CustomCardViewTitle"
-                app:layout_constraintStart_toEndOf="@id/image_border"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                />
+    <TextView
+        android:id="@+id/age"
+        android:layout_width="@dimen/dp0"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp8"
+        style="@style/CustomCardViewSimpleInfo"
+        tools:text="23"
+        app:layout_constraintTop_toBottomOf="@id/profession"
+        app:layout_constraintStart_toEndOf="@id/age_plachecholder"/>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/height_placheholder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp18"
+        android:layout_marginBottom="@dimen/dp8"
+        android:textSize="@dimen/sp16"
+        android:text="height :"
+        app:layout_constraintStart_toEndOf="@id/wonka_image"
+        app:layout_constraintTop_toBottomOf="@id/age_plachecholder"/>
 
 
 
-
-    </androidx.cardview.widget.CardView>
+    <TextView
+        android:id="@+id/height"
+        android:layout_width="@dimen/dp0"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp8"
+        style="@style/CustomCardViewSimpleInfo"
+        tools:text="186 cm"
+        app:layout_constraintTop_toBottomOf="@id/age"
+        app:layout_constraintStart_toEndOf="@id/height_placheholder"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

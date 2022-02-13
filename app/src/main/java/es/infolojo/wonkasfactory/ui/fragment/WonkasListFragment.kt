@@ -1,5 +1,6 @@
 package es.infolojo.wonkasfactory.ui.fragment
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,12 +8,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import dagger.hilt.android.AndroidEntryPoint
 import es.infolojo.wonkasfactory.R
 import es.infolojo.wonkasfactory.data.adapters.WonkasListAdapter
 import es.infolojo.wonkasfactory.data.adapters.WonkasListAdapterAction
 import es.infolojo.wonkasfactory.data.adapters.WonkasListState
+import es.infolojo.wonkasfactory.data.bo.ORDER_STATE
 import es.infolojo.wonkasfactory.data.vo.WonkaWorkerVO
 import es.infolojo.wonkasfactory.databinding.FragmentWonkasListBinding
 import es.infolojo.wonkasfactory.ui.utis.Utils
@@ -36,7 +37,13 @@ class WonkasListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentWonkasListBinding.bind(inflater.inflate(R.layout.fragment_wonkas_list, container, false))
+        binding = FragmentWonkasListBinding.bind(
+            inflater.inflate(
+                R.layout.fragment_wonkas_list,
+                container,
+                false
+            )
+        )
         return binding.root
     }
 
@@ -44,6 +51,7 @@ class WonkasListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initRecycler()
         initViewModel()
+        initToolbar()
     }
 
     private fun initRecycler() {
@@ -51,7 +59,7 @@ class WonkasListFragment : Fragment() {
     }
 
     private fun initViewModel() {
-        viewModel.wonkasListState.observe(viewLifecycleOwner) {state ->
+        viewModel.wonkasListState.observe(viewLifecycleOwner) { state ->
             when (state) {
                 WonkasListState.Error -> {
                     showLoading(false)
@@ -87,6 +95,57 @@ class WonkasListFragment : Fragment() {
             is WonkasListAdapterAction.DetailAction -> {
                 Utils.showToast(requireContext(), "Navigate to detail", Toast.LENGTH_SHORT)
             }
+            is WonkasListAdapterAction.RemoveAction -> {
+                showRemoveDialog(actions.id)
+            }
         }
     }
+
+    private fun initToolbar() {
+        binding.toolbar.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.filter_by_name -> {
+                    viewModel.orderByName(ORDER_STATE.BY_NAME)
+                    true
+                }
+
+                R.id.filter_by_age -> {
+                    viewModel.orderByName(ORDER_STATE.BY_AGE)
+                    true
+                }
+
+                R.id.filter_by_height -> {
+                    viewModel.orderByName(ORDER_STATE.BY_HEIGHT)
+                    true
+                }
+
+                R.id.reload -> {
+                    viewModel.init()
+                    true
+                }
+
+                else -> {
+                    false
+                }
+            }
+        }
+    }
+
+    fun showRemoveDialog(id: String) {
+        val builder: AlertDialog.Builder = AlertDialog.Builder(requireContext())
+
+        builder.let {
+            it.setMessage("Are you sure you want to delete?")
+                .setTitle("Delete worker")
+                .setPositiveButton("yes") { _, _ ->
+                    viewModel.deleteWonka(id)
+                }
+                .setNegativeButton("No") { _, _ ->
+                    //no-op
+                }
+        }
+        val dialog: AlertDialog = builder.create()
+        dialog.show()
+    }
+
 }
