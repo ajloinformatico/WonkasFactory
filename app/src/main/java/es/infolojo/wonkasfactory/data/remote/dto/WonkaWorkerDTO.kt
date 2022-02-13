@@ -3,6 +3,10 @@ package es.infolojo.wonkasfactory.data.remote.dto
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
+data class WonkaWorkerContainer(
+    @SerializedName("results") val listWorkers: List<WonkaWorkerDTO>
+): Serializable
+
 data class WonkaWorkerDTO(
     @SerializedName("id") val id: String?,
     @SerializedName("first_name") val firstName: String?,

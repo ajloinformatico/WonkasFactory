@@ -4,4 +4,5 @@
     <string name="filter_by_name">Filter by name</string>
     <string name="filter_by_age">Filter by age</string>
     <string name="filter_by_height">Filter by height</string>
+    <string name="wonka_image">Wonka worker image</string>
 </resources>

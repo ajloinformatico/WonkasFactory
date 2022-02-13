@@ -1,20 +1,24 @@
 package es.infolojo.wonkasfactory.ui.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import dagger.hilt.android.AndroidEntryPoint
 import es.infolojo.wonkasfactory.R
 import es.infolojo.wonkasfactory.data.adapters.WonkasListAdapter
 import es.infolojo.wonkasfactory.data.adapters.WonkasListAdapterAction
 import es.infolojo.wonkasfactory.data.adapters.WonkasListState
 import es.infolojo.wonkasfactory.data.vo.WonkaWorkerVO
 import es.infolojo.wonkasfactory.databinding.FragmentWonkasListBinding
+import es.infolojo.wonkasfactory.ui.utis.Utils
 import es.infolojo.wonkasfactory.ui.viewmodel.WonkasListViewModel
 
+@AndroidEntryPoint
 class WonkasListFragment : Fragment() {
 
     private lateinit var binding: FragmentWonkasListBinding
@@ -23,15 +27,27 @@ class WonkasListFragment : Fragment() {
         WonkasListAdapter(::adapterListener)
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
-        binding = FragmentWonkasListBinding.inflate(layoutInflater)
+        binding = FragmentWonkasListBinding.bind(inflater.inflate(R.layout.fragment_wonkas_list, container, false))
         return binding.root
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initRecycler()
         initViewModel()
+    }
+
+    private fun initRecycler() {
+        binding.recycler.adapter = this.adapter
     }
 
     private fun initViewModel() {
@@ -39,7 +55,7 @@ class WonkasListFragment : Fragment() {
             when (state) {
                 WonkasListState.Error -> {
                     showLoading(false)
-                    TODO("Error screen is in WIP")
+                    //TODO ERROR SCREEN
                 }
                 WonkasListState.Loading -> {
                     showLoading(true)
@@ -51,6 +67,7 @@ class WonkasListFragment : Fragment() {
                 }
             }
         }
+        viewModel.init()
     }
 
     private fun showLoading(boolean: Boolean) {
@@ -62,13 +79,13 @@ class WonkasListFragment : Fragment() {
     }
 
     private fun handleRender(wonkas: List<WonkaWorkerVO>) {
-
+        adapter.submitList(wonkas)
     }
 
     private fun adapterListener(actions: WonkasListAdapterAction) {
         when (actions) {
             is WonkasListAdapterAction.DetailAction -> {
-                //TODO Navigation to detail
+                Utils.showToast(requireContext(), "Navigate to detail", Toast.LENGTH_SHORT)
             }
         }
     }

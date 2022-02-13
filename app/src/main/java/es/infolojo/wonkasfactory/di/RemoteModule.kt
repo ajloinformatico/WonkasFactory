@@ -13,7 +13,7 @@ import javax.inject.Singleton
 @Module
 object RemoteModule {
 
-    private const val BASE_WONKAS_USERS = "https://2q2woep105.execute-api.eu-west-1.amazonaws.com/napptilus/oompa-loompas"
+    private const val BASE_WONKAS_USERS = "https://2q2woep105.execute-api.eu-west-1.amazonaws.com/"
 
     @Singleton
     @Provides fun provideRemoteService(): RemoteService {
@@ -22,5 +22,4 @@ object RemoteModule {
             .build()
         return retrofit.create(RemoteService::class.java)
     }
-
 }

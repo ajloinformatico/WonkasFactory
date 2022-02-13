@@ -6,4 +6,7 @@
     <dimen name="dp250">250dp</dimen>
     <dimen name="dp8">8dp</dimen>
     <dimen name="dp48">48dp</dimen>
+    <dimen name="dp125">125dp</dimen>
+    <dimen name="dp126">126dp</dimen>
+    <dimen name="dp200">200dp</dimen>
 </resources>
