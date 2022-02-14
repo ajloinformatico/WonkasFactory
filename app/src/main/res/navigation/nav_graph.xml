@@ -9,5 +9,32 @@
         android:id="@+id/wonkasListFragment"
         android:name="es.infolojo.wonkasfactory.ui.fragment.WonkasListFragment"
         android:label="fragment_wonkas_list"
-        tools:layout="@layout/fragment_wonkas_list" />
+        tools:layout="@layout/fragment_wonkas_list">
+        <action
+            android:id="@+id/action_wonkasListFragment_to_wonkaDetailFrament"
+            app:destination="@id/wonkaDetailFrament"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="s"
+            app:popUpTo="@id/wonkasListFragment">
+
+            <argument
+                android:name="ID"
+                app:argType="string"
+                app:nullable="true" />
+        </action>
+
+    </fragment>
+    <fragment
+        android:id="@+id/wonkaDetailFrament"
+        android:name="es.infolojo.wonkasfactory.ui.fragment.WonkaDetailFrament"
+        android:label="fragment_wonka_detail_frament"
+        tools:layout="@layout/fragment_wonka_detail_frament">
+
+        <argument
+            android:name="ID"
+            app:argType="string"
+            app:nullable="true" />
+
+    </fragment>
 </navigation>

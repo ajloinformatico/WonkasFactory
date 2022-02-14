@@ -13,4 +13,6 @@
     <dimen name="sp16">16sp</dimen>
     <dimen name="dp1">1dp</dimen>
     <dimen name="dp10">10dp</dimen>
+    <dimen name="dp64">64dp</dimen>
+    <dimen name="dp20">20dp</dimen>
 </resources>

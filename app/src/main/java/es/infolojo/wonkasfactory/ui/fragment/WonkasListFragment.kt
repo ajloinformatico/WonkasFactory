@@ -5,9 +5,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.MediaController
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import es.infolojo.wonkasfactory.R
 import es.infolojo.wonkasfactory.data.adapters.WonkasListAdapter
@@ -23,6 +26,7 @@ import es.infolojo.wonkasfactory.ui.viewmodel.WonkasListViewModel
 class WonkasListFragment : Fragment() {
 
     private lateinit var binding: FragmentWonkasListBinding
+    private lateinit var navController: NavController
     private val viewModel: WonkasListViewModel by viewModels()
     private val adapter by lazy {
         WonkasListAdapter(::adapterListener)
@@ -37,6 +41,7 @@ class WonkasListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        navController = findNavController()
         binding = FragmentWonkasListBinding.bind(
             inflater.inflate(
                 R.layout.fragment_wonkas_list,
@@ -93,7 +98,11 @@ class WonkasListFragment : Fragment() {
     private fun adapterListener(actions: WonkasListAdapterAction) {
         when (actions) {
             is WonkasListAdapterAction.DetailAction -> {
-                Utils.showToast(requireContext(), "Navigate to detail", Toast.LENGTH_SHORT)
+                navController.navigate(
+                    WonkasListFragmentDirections.actionWonkasListFragmentToWonkaDetailFrament(
+                        actions.id
+                    )
+                )
             }
             is WonkasListAdapterAction.RemoveAction -> {
                 showRemoveDialog(actions.id)

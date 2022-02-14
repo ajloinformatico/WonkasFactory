@@ -1,14 +1,164 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context=".ui.fragment.WonkaDetailFrament">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!--Collapsing toolbar-->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/main_app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp300"
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/main_collapsing"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:contentScrim="?attr/colorPrimary"
+            app:expandedTitleMarginEnd="@dimen/dp64"
+            app:expandedTitleMarginStart="@dimen/dp48"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <ImageView
+                android:id="@+id/main_toolbar_image_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/wonka_image"
+                android:fitsSystemWindows="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_baseline_camera_alt_24"
+                app:layout_collapseMode="parallax" />
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/main_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-</FrameLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp8">
+
+            <TextView
+                android:id="@+id/detail_email"
+                style="@style/DetailInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="antoniojoselojoojeda@gmail.com" />
+
+            <View
+                android:id="@+id/favorite_color"
+                android:layout_width="@dimen/dp20"
+                android:layout_height="@dimen/dp20"
+                android:layout_marginTop="@dimen/dp8"
+                android:background="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/detail_email" />
+
+            <TextView
+                style="@style/DetailInfo"
+                android:layout_width="@dimen/dp0"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp18"
+                android:text="@string/color_favorite"
+                app:layout_constraintStart_toEndOf="@id/favorite_color"
+                app:layout_constraintTop_toBottomOf="@id/detail_email" />
+
+            <TextView
+                android:id="@+id/genre_placheholder"
+                style="@style/DetailInfo"
+                android:layout_width="@dimen/dp0"
+                android:layout_height="wrap_content"
+                android:text="@string/genre"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/detail_email" />
+
+            <TextView
+                android:id="@+id/genre"
+                style="@style/DetailInfo"
+                android:layout_width="@dimen/dp0"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dp10"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@id/genre_placheholder"
+                app:layout_constraintTop_toBottomOf="@id/detail_email"
+                tools:text="M" />
+
+            <TextView
+                android:id="@+id/description_placheholder"
+                style="@style/DetailInfoTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp10"
+                android:text="@string/description"
+                app:layout_constraintTop_toBottomOf="@id/favorite_color" />
+
+            <TextView
+                android:id="@+id/description"
+                style="@style/DetailInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/description_placheholder"
+                tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum" />
+
+            <TextView
+                android:id="@+id/quote_placheholder"
+                style="@style/DetailInfoTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/quota"
+                app:layout_constraintTop_toBottomOf="@id/description" />
+
+            <TextView
+                android:id="@+id/quote"
+                style="@style/DetailInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/quote_placheholder"
+                tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum" />
+
+            <Button
+                android:id="@+id/talk_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp20"
+                android:layout_marginBottom="@dimen/dp10"
+                android:text="@string/talk"
+                android:textAllCaps="false"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/quote" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <include
+        android:id="@+id/spinner"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        layout="@layout/loading"/>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

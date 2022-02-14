@@ -1,5 +1,7 @@
 package es.infolojo.wonkasfactory.data
 
+import android.content.Context
+import es.infolojo.wonkasfactory.R
 import es.infolojo.wonkasfactory.data.bo.WonkaWorkerBO
 import es.infolojo.wonkasfactory.data.remote.dto.WonkaWorkerDTO
 import es.infolojo.wonkasfactory.data.vo.WonkaWorkerVO
@@ -44,5 +46,14 @@ object Mappers {
             color = this.color,
             food = this.food,
         )
+
+    //TODO: RESTO DE COLORES
+    fun String.stringColorToResource(context: Context): Int =
+        when (this) {
+            "red" -> R.color.grey
+            else -> {
+                R.color.white
+            }
+        }
 }
 
