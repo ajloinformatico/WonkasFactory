@@ -68,13 +68,15 @@ class WonkasListFragment : Fragment() {
             when (state) {
                 WonkasListState.Error -> {
                     showLoading(false)
-                    //TODO ERROR SCREEN
+                    showError(true)
                 }
                 WonkasListState.Loading -> {
                     showLoading(true)
+                    showError(false)
                 }
                 is WonkasListState.Render -> {
                     showLoading(false)
+                    showError(false)
                     handleRender(state.wonkas)
 
                 }
@@ -88,6 +90,14 @@ class WonkasListFragment : Fragment() {
             binding.spinner.root.visibility = View.VISIBLE
         } else {
             binding.spinner.root.visibility = View.GONE
+        }
+    }
+
+    private fun showError(boolean: Boolean) {
+        if (boolean) {
+            binding.errorScreen.root.visibility = View.VISIBLE
+        } else {
+            binding.errorScreen.root.visibility = View.GONE
         }
     }
 

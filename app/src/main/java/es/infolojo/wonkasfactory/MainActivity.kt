@@ -9,12 +9,11 @@ import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
 import dagger.hilt.android.AndroidEntryPoint
 import es.infolojo.wonkasfactory.databinding.ActivityMainBinding
+import es.infolojo.wonkasfactory.databinding.FragmentWonkaDetailFramentBinding
 import es.infolojo.wonkasfactory.ui.viewmodel.WonkasListViewModel
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-
-    private lateinit var binding: ActivityMainBinding
 
     private lateinit var navController: NavController
 
@@ -27,19 +26,7 @@ class MainActivity : AppCompatActivity() {
         this.setTheme(R.style.Theme_WonkasFactory)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-//        binding = ActivityMainBinding.inflate(layoutInflater)
-
         wonkasListViewModel.init()
-
         navController = Navigation.findNavController(this, R.id.navigation_host)
-    }
-
-    private fun initNavigation(){
-//        navController.addOnDestinationChangedListener{_, destination, _ ->
-//
-//            when (destination) {
-//                //TODO DESTINTATIONS ESPECIFIC CONFIG
-//            }
-//        }
     }
 }

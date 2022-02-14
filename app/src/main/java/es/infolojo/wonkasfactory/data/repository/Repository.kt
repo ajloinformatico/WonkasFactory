@@ -22,18 +22,23 @@ class Repository @Inject constructor(
 
     }
 
-    suspend fun getOneWonkaWorker(id: String): WonkaWorkerBO {
+    suspend fun getOneWonkaWorker(id: String): WonkaWorkerBO? {
         val resource = remoteService.getOneWonkaWorker(id)
 
         val defaultWorker = WonkaWorkerBO()
 
-        return if (resource.isSuccessful) {
-            resource.body()?.toBO()
-            defaultWorker
+        if (resource.isSuccessful) {
+            val wonka = resource.body()
+            if (wonka != null) {
+                return wonka.toBO()
+            } else {
+                return defaultWorker
+            }
 
         } else {
-            defaultWorker
+            return defaultWorker
         }
+
 
     }
 }

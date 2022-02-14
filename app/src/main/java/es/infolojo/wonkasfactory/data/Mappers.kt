@@ -50,7 +50,8 @@ object Mappers {
     //TODO: RESTO DE COLORES
     fun String.stringColorToResource(context: Context): Int =
         when (this) {
-            "red" -> R.color.grey
+            "red" -> R.color.red
+            "blue" -> R.color.blue
             else -> {
                 R.color.white
             }

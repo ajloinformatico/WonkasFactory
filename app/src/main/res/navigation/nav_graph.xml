@@ -15,13 +15,12 @@
             app:destination="@id/wonkaDetailFrament"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="s"
-            app:popUpTo="@id/wonkasListFragment">
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right">
 
             <argument
                 android:name="ID"
-                app:argType="string"
-                app:nullable="true" />
+                app:argType="string" />
         </action>
 
     </fragment>
@@ -33,8 +32,7 @@
 
         <argument
             android:name="ID"
-            app:argType="string"
-            app:nullable="true" />
+            app:argType="string"/>
 
     </fragment>
 </navigation>

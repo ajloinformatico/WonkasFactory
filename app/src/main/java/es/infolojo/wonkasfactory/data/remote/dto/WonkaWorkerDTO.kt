@@ -19,7 +19,7 @@ data class WonkaWorkerDTO(
     @SerializedName("country") val country: String?,
     @SerializedName("height") val height: Long?,
     @SerializedName("age") val age: Long?,
-    @SerializedName("genre") val genre: String?,
+    @SerializedName("gender") val genre: String?,
     @SerializedName("email") val email: String?
 ): Serializable
 

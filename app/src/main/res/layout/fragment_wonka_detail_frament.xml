@@ -11,7 +11,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/main_app_bar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp300"
+        android:layout_height="@dimen/dp400"
         android:fitsSystemWindows="true"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
@@ -76,6 +76,7 @@
                 app:layout_constraintTop_toBottomOf="@id/detail_email" />
 
             <TextView
+                android:id="@+id/color_placheholder"
                 style="@style/DetailInfo"
                 android:layout_width="@dimen/dp0"
                 android:layout_height="wrap_content"
@@ -138,6 +139,16 @@
                 tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum" />
 
             <Button
+                android:id="@+id/expand_quote"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAllCaps="false"
+                android:text="@string/expand_quota"
+                app:layout_constraintTop_toBottomOf="@id/quote"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <Button
                 android:id="@+id/talk_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -148,7 +159,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/quote" />
+                app:layout_constraintTop_toBottomOf="@id/expand_quote" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -156,6 +167,12 @@
 
     <include
         android:id="@+id/spinner"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        layout="@layout/loading"/>
+
+    <include
+        android:id="@+id/error_screen"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         layout="@layout/loading"/>

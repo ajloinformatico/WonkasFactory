@@ -5,7 +5,6 @@
     <string name="filter_by_age">Filter by age</string>
     <string name="filter_by_height">Filter by height</string>
     <string name="wonka_image">Wonka worker image</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="reload">Reload</string>
     <string name="color_favorite">color favorite</string>
@@ -13,4 +12,7 @@
     <string name="genre">Genre</string>
     <string name="quota">Quota :</string>
     <string name="talk">Talk</string>
+    <string name="expand_quota">Expand Quota</string>
+    <string name="un_expaned_quota">Hide Quota</string>
+    <string name="something_was_wrong">Something was wrong</string>
 </resources>
