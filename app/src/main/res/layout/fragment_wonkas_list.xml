@@ -28,7 +28,7 @@
     <ImageView
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:src="@mipmap/ic_launcher_new"
+        android:src="@drawable/ic_launcher_new"
         android:contentDescription="@string/app_name"
         app:layout_constraintTop_toTopOf="@id/toolbar"
         app:layout_constraintBottom_toBottomOf="@id/toolbar"
